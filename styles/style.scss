@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import "variables";
+@import "breakpoints";
+@import "modal";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "roboto";
+  background-image: url(/assets/images.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+header {
+  @extend .between;
+  padding: 20px;
+  gap: 20px;
+  font-size: 21px;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    i {
+      font-size: 29px;
+      color: rgb(230, 222, 222);
+    }
+    img {
+      width: 50px;
+    }
+    span {
+      font-size: 26px;
+      color: rgb(230, 222, 222);
+    }
+  }
+  .middle {
+    form {
+      display: flex;
+      background: rgb(235, 243, 243);
+      padding: 6px 9px;
+      border-radius: 10px;
+    }
+    input {
+      border: none;
+      outline: none;
+      font-size: 18px;
+      background: transparent;
+
+      &::placeholder {
+        font-weight: bold;
+      }
+    }
+
+    @include sm() {
+      display: none;
+    }
+  }
+
+  .right {
+    @extend .between;
+    gap: 15px;
+
+    i {
+      @extend .icon;
+    }
+    img {
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+    }
+  }
+}
+
+// ana içerik alanı
+
+section {
+  display: flex;
+  gap: 20px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 40px;
+
+  @include sm {
+    padding: 0px;
+    padding-left: 6px;
+  }
+
+  .create {
+    background: $dark_gray;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+    &:hover {
+      box-shadow: 2px 2px 10px gray;
+    }
+
+    span {
+      color: rgb(216, 213, 213);
+      font-size: 20px;
+    }
+  }
+
+  ul {
+    display: grid;
+    gap: 16px;
+
+    li {
+      list-style: none;
+      label {
+        padding: 8px;
+        margin-left: 4px;
+        display: flex;
+        gap: 12px;
+        border-radius: 0 15px 15px 0;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          background: $dark_gray;
+          color: rgb(216, 213, 213);
+          font-size: 17px;
+        }
+      }
+
+      input {
+        display: none;
+      }
+
+      &:has(input:checked) {
+        background: $dark_gray;
+        border-radius: 0 15px 15px 0;
+      }
+    }
+  }
+
+  .bottom {
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.hide {
+  span {
+    display: none;
+  }
+}
+
+main {
+  flex-grow: 1;
+
+  @include sm {
+    margin-right: 20px;
+  }
+
+  .top {
+    @extend .between;
+    background: $dark_gray;
+    font-size: 20px;
+    color: rgb(216, 213, 213);
+    border-radius: 10px 10px 0 0;
+    padding: 8px 16px;
+    margin: auto;
+    width: 75vw;
+    height: 90px;
+
+    i {
+      @extend .icon;
+    }
+    .left,
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .mails {
+    background: rgba(0, 0, 0, 0.9);
+    color: rgb(238, 236, 236);
+    margin: auto;
+    height: 100vh;
+    width: 75vw;
+  }
+}
+
+.mail {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  font-size: 18px;
+  padding: 15px;
+  border-bottom: 1px solid white;
+  column-gap: 5px;
+  cursor: pointer;
+  #star {
+    color: gold;
+  }
+
+  &:hover {
+    box-shadow: 0 0 4px rgba(128, 128, 128, 0.9);
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .desc {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .time {
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  #button-wrapper {
+    display: none;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 4px 10px;
+    border-radius: 5px;
+
+    &:hover {
+      background: rgb(201, 200, 200);
+    }
+  }
+
+  &:hover > #button-wrapper {
+    display: flex;
+    justify-content: end;
+  }
+
+  &:hover > .time {
+    display: none;
+  }
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 20px;
+
+  @include sm {
+    padding: 12px;
+  }
+
+  span {
+    background: $dark_gray;
+    height: 2px;
+    width: 100%;
+  }
+
+  img {
+    @extend .icon;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+
+  @include sm {
+    display: none;
+  }
+}
+
+.warn {
+  padding-top: 50px;
+  text-align: center;
+  font-weight: bold;
+}
